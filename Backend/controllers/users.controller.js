@@ -25,6 +25,10 @@ exports.signup = async (req, res) => {
 
 }
 
+
+
+
+
 exports.login = async (req, res) => {
 	const user = await Users.findOne({where: {email: req.body.email}});
 	if(user === null){
@@ -45,3 +49,5 @@ exports.login = async (req, res) => {
 
 	}
 }
+
+
