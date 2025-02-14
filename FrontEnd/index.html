@@ -28,7 +28,7 @@
 	<main>
 		<section id="introduction">
 			<figure>
-				<img src="./assets/images/sophie-bluel.png" alt="">
+				<img src="./assets/sophie-bluel.webp" alt="">
 			</figure>
 			<article>
 				<h2>Designer d'espace</h2>
@@ -114,36 +114,8 @@
 					<i class="fa-solid fa-xmark"></i>
 				</div>
 				<h3 class="galerie-photo-modale" id="galerie-photo">Galerie photo</h3>
-				<!--<ul class="category-list" id="category-list-in-modale">
-					<li id="all-categories" class="all-categories">
-						Toutes
-					</li>
-				</ul>-->
 				<div class="work-gallery-modale" id="work-gallery-in-modale">
-					<figure class="figure-modale">
-						<img src="assets/images/abajour-tahina.png" class="image-modale" alt="Abajour Tahina">
-						<button class="delete-bouton" id="delete-bouton"><i class="fa-solid fa-trash-can"></i></button>
-					</figure>
-
 				</div>
-				<!--<div class="photos-modale"> onclick="deleteImage(imageContainer)"
-					<img src="assets/images/abajour-tahina.png" alt="abat-jour sur fond orange">
-					<img src="assets/images/appartement-paris-v.png" alt="appartement parisien avec un canapé">
-					<img src="assets/images/restaurant-sushisen-londres.png" alt="restaurant londonien">
-					<img src="assets/images/la-balisiere.png" alt="image d'un salon avec vue sur la mer">
-					<img src="assets/images/structures-thermopolis.png"
-						alt="image de plusieurs structures appuyer sur un mur">
-					<img src="assets/images/appartement-paris-x.png"
-						alt="appartement parisien avec une étagère et de la lumière d'ambiance">
-					<img src="assets/images/villa-ferneze.png"
-						alt="pièce d'une villa avec un canapé noir dans le fond de la pièce">
-					<img src="assets/images/appartement-paris-xviii.png"
-						alt="appartement parisien avec un lit et deux cadres bleu et jaune">
-					<img src="assets/images/le-coteau-cassis.png" alt="pièce vert bouteille avec un fauteuil">
-					<img src="assets/images/bar-lullaby-paris.png" alt="bar parisien">
-					<img src="assets/images/hotel-first-arte-new-delhi.png"
-						alt="salle a manger d'un hotel avec plusieurs fauteils">
-				</div>-->
 				<div class="ligne-separation"></div>
 				<button class="boutonModale" id="addPicture">
 					<p class="texteBoutonModale">Ajouter une photo</p>
@@ -162,6 +134,7 @@
 						<input type="file" id="file-input" accept="image/*" class="visually-hidden" />
 						<label for="file-input" class="ajouter-photo">+ Ajouter photo</label>
 					</div>
+					<div class="error" id="error-file">Veuillez ajouter une photo</div>
 					<p class="jpg-png">jpg, png : 4mo max</p>
 				</div>
 				<form class="categorie-flex">
@@ -169,11 +142,13 @@
 					<label for="categorie">
 						<input type="text" id="titre" name="titre" class="rectangle-categorie">
 					</label>
+					<div class="error" id="error-title">Veuillez ajouter un titre</div>
 					<h3 class="titre-categorie">Catégorie</h3>
 					<label for="categorie">
 						<select type="text" id="categorie-select" name="categorie" class="rectangle-categorie">
 						</select>
 					</label>
+					<div class="error" id="error-category">Veuillez ajouter une catégorie </div>
 				</form>
 				<div class="ligne-separation"></div>
 				<button class="boutonModale2" id="addPicture2">

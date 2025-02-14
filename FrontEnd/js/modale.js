@@ -12,31 +12,29 @@ addPictureButton.addEventListener("click", addPicture);
 const modale = document.querySelector(".modale");
 const modale2 = document.querySelector(".modale2");
 
-// Empêcher la fermeture des modales au clic à l'intérieur
-modale.addEventListener("click", clickModale);
-modale2.addEventListener("click", clickModale); // Ajouté ici pour modale2
 
-// Initialiser la modale
+modale.addEventListener("click", clickModale);
+modale2.addEventListener("click", clickModale);
 
 async function addPicture() {
-  modale.style.display = "none"; // Ferme modale 1
-  modale2.style.display = "flex"; // Ouvre modale 2
+  modale.style.display = "none";
+  modale2.style.display = "flex";
   await sendWork();
 }
 
 function clickModale(event) {
-  event.stopPropagation(); // Empêche la propagation des clics à modaleBg
+  event.stopPropagation();
 }
 
 function hideModale() {
-  modaleBg.style.display = "none"; // Ferme le fond
-  modale.style.display = "none"; // Ferme modale 1
-  modale2.style.display = "none"; // Ferme modale 2
+  modaleBg.style.display = "none";
+  modale.style.display = "none";
+  modale2.style.display = "none";
 }
 
 function showModale() {
-  modaleBg.style.display = "flex"; // Affiche le fond
-  modale.style.display = "flex"; // Affiche modale 1
+  modaleBg.style.display = "flex";
+  modale.style.display = "flex";
 }
 
 let SELECTED_CATEGORY = "";
@@ -133,16 +131,15 @@ function addDeleteButton () {
     buttons.forEach((button) => {
       button.style.display = "none";
     });
-
     return;
   }
-
   buttons.forEach((buttonContainer) => {
-
+    const deleteContainer = document.createElement("div");
     const deleteIcon = document.createElement("i");
     deleteIcon.className = "delete-icon fa-solid fa-trash-can";
-
-    buttonContainer.appendChild(deleteIcon);
+    deleteContainer.appendChild(deleteIcon);
+    buttonContainer.appendChild(deleteContainer);
+    deleteContainer.className = "delete-container";
 
     deleteIcon.addEventListener("click", async (event) => {
         event.preventDefault();
@@ -181,6 +178,10 @@ async function sendWork() {
   const workGallery = document.getElementById("work-gallery-in-modale");
 
   validateButton.addEventListener("click", async () => {
+    document.querySelector("#error-file").style.display = "none"
+    document.querySelector("#error-title").style.display = "none"
+    document.querySelector("#error-category").style.display = "none"
+
     const file = fileInput.files[0];
     const title = document.querySelector("#titre").value;
     const category = document.querySelector("#categorie-select").value;
@@ -191,8 +192,18 @@ async function sendWork() {
       return;
     }
 
-    if (!file || !title || !category) {
-      alert("Veuillez remplir tous les champs et sélectionner un fichier.");
+    if (!file) {
+      document.querySelector("#error-file").style.display = "flex"
+      return;
+    }
+
+    if (!title) {
+      document.querySelector("#error-title").style.display = "flex"
+      return;
+    }
+
+    if (!category) {
+      document.querySelector("#error-category").style.display = "flex"
       return;
     }
 

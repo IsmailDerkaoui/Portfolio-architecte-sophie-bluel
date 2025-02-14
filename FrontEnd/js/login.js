@@ -42,7 +42,11 @@ document.getElementById('formulaire').addEventListener('submit', async function 
     }
 });
 
+
+
+
 //*********************** TOKEN  **************************//
+
 
 async function sendWork(workData) {
     const token = sessionStorage.getItem('authToken');
@@ -68,6 +72,32 @@ async function sendWork(workData) {
 
         const result = await response.json();
         console.log('Travail envoyé:', result);
+    } catch (error) {
+        console.error('Erreur :', error.message);
+    }
+}
+
+async function deleteWork(workId) {
+    const token = sessionStorage.getItem('authToken');
+
+    if (!token) {
+        console.error('Aucun token trouvé. Veuillez vous connecter.');
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Erreur lors de la suppression du travail.');
+        }
+
+        console.log('Travail supprimé avec succès.');
     } catch (error) {
         console.error('Erreur :', error.message);
     }
